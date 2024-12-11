@@ -46,6 +46,7 @@ fn weird_symmetric() {
     ]);
     let original = (Wrapping(426), Wrapping(216));
     let encrypted = network.encrypt(original);
+    assert_ne!(original, encrypted);
     let decrypted = network.decrypt(encrypted);
     assert_eq!(original, decrypted);
 }

@@ -41,6 +41,7 @@ fn symmetric() {
     .feistel_symmetric();
     let original = [0; 64].into();
     let encrypted = network.array_encrypt(original);
+    assert_ne!(original, encrypted);
     let decrypted = network.array_decrypt(encrypted);
     assert_eq!(original, decrypted);
 }
@@ -65,6 +66,7 @@ fn array_symmetric() {
     .feistel_array();
     let original = [0; 64].into();
     let encrypted = network.array_encrypt(original);
+    assert_ne!(original, encrypted);
     let decrypted = network.array_decrypt(encrypted);
     assert_eq!(original, decrypted);
 }
@@ -89,6 +91,7 @@ fn array_asymmetric() {
     .feistel_array();
     let original = [0; 48].into();
     let encrypted = network.array_encrypt(original);
+    assert_ne!(original, encrypted);
     let decrypted = network.array_decrypt(encrypted);
     assert_eq!(original, decrypted);
 }
