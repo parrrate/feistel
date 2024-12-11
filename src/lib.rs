@@ -1,5 +1,8 @@
 //! Generic implementation of a Feistel Cipher.
 //!
+//! **Warning: this crate *for now* values ease of use and genericity over having perfect
+//! timing-attack-resistent implementations.**
+//!
 //! ```rust
 //! # #[cfg(feature = "array")]
 //! # fn main() {
