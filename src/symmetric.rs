@@ -7,7 +7,7 @@ use crate::{Network, Round};
 pub trait SymmetricNetwork:
     Sized + IntoIterator<Item: Round<Self::T, L = Self::T>, IntoIter: DoubleEndedIterator>
 {
-    /// Type of the half of a block.
+    /// Half of a block.
     type T: BitXor<Output = Self::T>;
     /// `swap(swap(block)) == block`
     fn swap(block: (Self::T, Self::T)) -> (Self::T, Self::T) {
@@ -61,9 +61,13 @@ impl<
     type T = T;
 }
 
+mod private {
+    pub trait Sealed<T> {}
+}
+
 /// Extension trait for creating [`SymmetricNetwork`]s.
 pub trait SymmetricExt<T: BitXor<Output = T>>:
-    Sized + IntoIterator<Item: Round<T, L = T>, IntoIter: DoubleEndedIterator>
+    Sized + IntoIterator<Item: Round<T, L = T>, IntoIter: DoubleEndedIterator> + private::Sealed<T>
 {
     /// Make a [`SymmetricNetwork`] from an [`IntoIterator`].
     fn feistel_symmetric(self) -> Symmetric<Self, T> {
@@ -74,6 +78,13 @@ pub trait SymmetricExt<T: BitXor<Output = T>>:
 impl<
         T: BitXor<Output = T>,
         I: IntoIterator<Item: Round<T, L = T>, IntoIter: DoubleEndedIterator>,
+    > private::Sealed<T> for I
+{
+}
+
+impl<
+        T: BitXor<Output = T>,
+        I: IntoIterator<Item: Round<T, L = T>, IntoIter: DoubleEndedIterator> + private::Sealed<T>,
     > SymmetricExt<T> for I
 {
 }

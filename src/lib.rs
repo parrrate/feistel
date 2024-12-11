@@ -1,4 +1,4 @@
-//! Generic implementation of a Feistel Cipher
+//! Generic implementation of a Feistel Cipher.
 
 use std::ops::BitXor;
 

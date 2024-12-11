@@ -116,6 +116,10 @@ impl<
     }
 }
 
+mod private {
+    pub trait Sealed<T, R> {}
+}
+
 /// Extension trait for creating [`ArrayNetwork`]s.
 pub trait ArrayExt<
     T: BitXorAssign,
@@ -126,7 +130,7 @@ pub trait ArrayExt<
     + IntoIterator<
         Item: Round<XorArray<T, R>, L = XorArray<T, Self::L>>,
         IntoIter: DoubleEndedIterator,
-    >
+    > + private::Sealed<T, R>
 {
     /// Length of the left half of a block.
     type L: ArrayLength + Add<R, Output = <R as Add<Self::L>>::Output>;
@@ -135,6 +139,18 @@ pub trait ArrayExt<
     fn feistel_array(self) -> Array<Self, T, R> {
         Array::new(self)
     }
+}
+
+impl<
+        T: BitXorAssign,
+        L: ArrayLength + Add<R, Output = <R as Add<L>>::Output>,
+        R: ArrayLength + Add<L, Output: ArrayLength + Sub<R, Output = L> + Sub<L, Output = R>>,
+        I: IntoIterator<
+            Item: Round<XorArray<T, R>, L = XorArray<T, L>>,
+            IntoIter: DoubleEndedIterator,
+        >,
+    > private::Sealed<T, R> for I
+{
 }
 
 impl<

@@ -1,8 +1,8 @@
 /// Hash function for a specific round. Usually depends on a key.
 pub trait Round<R> {
-    /// Type of the right half of the block.
+    /// Type of the left half of the block.
     type L;
-    /// Inspect the left half to generate a value to be xored with the right half.
+    /// Inspect the right half to generate a value to be xored with the left half.
     fn run(self, right: &R) -> Self::L;
 }
 
