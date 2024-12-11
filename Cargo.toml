@@ -4,7 +4,8 @@ version = "0.1.0"
 edition = "2021"
 publish = true
 description = "Generic Feistel Cipher"
-keywords = ["crypto"]
+keywords = ["crypto", "no-std"]
+categories = ["no-std", "cryptography", "algorithms"]
 
 [features]
 default = ["array"]
