@@ -2,6 +2,7 @@
 name = "feistel"
 version = "0.1.0"
 edition = "2021"
+rust-version = "1.79"
 publish = true
 description = "Generic Feistel Cipher"
 documentation = "https://docs.rs/feistel"
