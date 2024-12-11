@@ -1,4 +1,4 @@
-use std::ops::{BitXor, BitXorAssign};
+use core::ops::{BitXor, BitXorAssign};
 
 use generic_array::{ArrayLength, GenericArray};
 

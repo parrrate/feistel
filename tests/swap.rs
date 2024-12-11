@@ -1,4 +1,4 @@
-use std::num::Wrapping;
+use core::num::Wrapping;
 
 use feistel::{Network, Round, SymmetricNetwork};
 
@@ -18,7 +18,7 @@ struct Net([Rnd; 4]);
 
 impl IntoIterator for Net {
     type Item = Rnd;
-    type IntoIter = std::array::IntoIter<Rnd, 4>;
+    type IntoIter = core::array::IntoIter<Rnd, 4>;
 
     fn into_iter(self) -> Self::IntoIter {
         self.0.into_iter()

@@ -6,7 +6,7 @@
 //! # use sha2::{Digest, Sha256};
 //! # use generic_array::ConstArrayLength;
 //! # use feistel::*;
-//! # let key: [u8; 32] = std::array::from_fn(|i| i as _);
+//! # let key: [u8; 32] = core::array::from_fn(|i| i as _);
 //! let network = key
 //!     .chunks_exact(4)
 //!     .map(|chunk| {
@@ -29,7 +29,9 @@
 //! # fn main() {}
 //! ```
 
-use std::ops::BitXor;
+#![no_std]
+
+use core::ops::BitXor;
 
 #[cfg(feature = "array")]
 pub use self::{
@@ -85,7 +87,7 @@ struct Reverse<I>(pub I);
 
 impl<I: IntoIterator<IntoIter: DoubleEndedIterator>> IntoIterator for Reverse<I> {
     type Item = I::Item;
-    type IntoIter = std::iter::Rev<I::IntoIter>;
+    type IntoIter = core::iter::Rev<I::IntoIter>;
     fn into_iter(self) -> Self::IntoIter {
         self.0.into_iter().rev()
     }

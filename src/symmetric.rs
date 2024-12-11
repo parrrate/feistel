@@ -1,4 +1,4 @@
-use std::{marker::PhantomData, ops::BitXor};
+use core::{marker::PhantomData, ops::BitXor};
 
 use crate::{Network, Round};
 

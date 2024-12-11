@@ -18,7 +18,7 @@ impl<F: Fn() -> I, I: IntoIterator> IntoIterator for Iterable<F> {
 }
 
 fn key() -> [u8; 32] {
-    std::array::from_fn(|i| i as _)
+    core::array::from_fn(|i| i as _)
 }
 
 #[test]
