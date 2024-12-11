@@ -2,6 +2,9 @@
 name = "feistel"
 version = "0.1.0"
 edition = "2021"
+publish = true
+description = "Generic Feistel Cipher"
+keywords = ["crypto"]
 
 [features]
 default = ["array"]
