@@ -4,8 +4,16 @@ version = "0.1.0"
 edition = "2021"
 publish = true
 description = "Generic Feistel Cipher"
+documentation = "https://docs.rs/feistel"
 keywords = ["crypto", "no-std"]
 categories = ["no-std", "cryptography", "algorithms"]
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/parrrate/feistel"
+authors = [
+    "Alisa Feistel <alisafeistel@gmail.com>",
+    "T.A. Prikhodko <tim@ongoteam.yaconnect.com>",
+]
 
 [features]
 default = ["array"]
