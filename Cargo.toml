@@ -13,7 +13,7 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/parrrate/feistel"
 authors = [
     "Alisa Feistel <alisafeistel@gmail.com>",
-    "T.A. Prikhodko <tim@ongoteam.yaconnect.com>",
+    "Clementina Prikhodko <tim@ongoteam.yaconnect.com>",
 ]
 
 [features]
